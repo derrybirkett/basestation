@@ -45,6 +45,33 @@ pnpm nx serve app
 pnpm nx serve marketing
 ```
 
+## Testing GitHub OAuth locally
+
+1) Create a GitHub OAuth App
+
+- Homepage URL: `http://127.0.0.1:4200/`
+- Authorization callback URL: `http://127.0.0.1:8787/auth/github/callback`
+
+2) Configure env vars (recommended: direnv)
+
+- Install direnv (if needed)
+- Copy `.envrc.example` to `.envrc` and fill in `GITHUB_CLIENT_ID` and `GITHUB_CLIENT_SECRET`
+- Run `direnv allow`
+
+3) Run API + app
+
+```bash
+pnpm nx serve api
+pnpm exec vite apps/app --host 127.0.0.1 --port 4200 --strictPort
+```
+
+4) Click through
+
+- Sign in
+- Enable GitHub integration
+- Click “Connect GitHub” in the Repos widget
+
+
 ## Status
 
 ✅ **v0.1.0** - Initial product surfaces + auth gating (2025-12-30)

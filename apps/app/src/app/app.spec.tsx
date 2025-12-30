@@ -69,4 +69,49 @@ describe('App', () => {
     );
     expect(persisted).toContain('"enabled":true');
   });
+
+  it('should show connect UI when GitHub source is api and not connected', async () => {
+    const adapter: AuthAdapter = {
+      name: 'test',
+      async getSession() {
+        return { user: { id: 'u1', email: 'dev@example.com' } };
+      },
+      async signIn() {
+        return { user: { id: 'u1', email: 'dev@example.com' } };
+      },
+      async signOut() {
+        return;
+      },
+    };
+
+    const originalGithubSource = process.env.VITE_GITHUB_SOURCE;
+    process.env.VITE_GITHUB_SOURCE = 'api';
+
+    const originalFetch = window.fetch;
+    window.fetch = (async () =>
+      new Response(JSON.stringify({ error: 'github_not_connected' }), {
+        status: 401,
+        headers: { 'content-type': 'application/json' },
+      })) as any;
+
+    const { findByLabelText, findByRole } = render(
+      <AuthAdapterProvider adapter={adapter}>
+        <AuthSessionProvider>
+          <App />
+        </AuthSessionProvider>
+      </AuthAdapterProvider>,
+    );
+
+    const toggle = (await findByLabelText(
+      'Enable GitHub integration',
+    )) as HTMLInputElement;
+    fireEvent.click(toggle);
+
+    expect(
+      await findByRole('link', { name: 'Connect GitHub' }),
+    ).toBeTruthy();
+
+    window.fetch = originalFetch;
+    process.env.VITE_GITHUB_SOURCE = originalGithubSource;
+  });
 });

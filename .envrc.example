@@ -1,0 +1,20 @@
+# Copy to .envrc and run: direnv allow
+#
+# This file is gitignored (see .gitignore). Do NOT commit secrets.
+
+# Frontend (Vite)
+export VITE_GITHUB_SOURCE=api
+
+# API server
+export API_HOST=127.0.0.1
+export API_PORT=8787
+export FRONTEND_URL=http://127.0.0.1:4200/
+
+# GitHub OAuth App credentials
+# Create one at: https://github.com/settings/developers
+export GITHUB_CLIENT_ID=
+export GITHUB_CLIENT_SECRET=
+
+# Optional overrides
+# export GITHUB_OAUTH_CALLBACK_URL=http://127.0.0.1:8787/auth/github/callback
+# export API_BASE_URL=http://127.0.0.1:8787

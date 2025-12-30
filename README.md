@@ -23,6 +23,7 @@ This project uses `.pip` as an immutable template (genome):
 - [Activity Log](./docs/activity-log.md) - Historical record of changes
 - [Changelog](./docs/changelog.md) - User-facing release notes
 - [Agentic Workflow](./docs/agentic.md) - How to use agents with a human in the loop
+- [Roadmap](./docs/roadmap.md) - Milestones and scope
 
 ### Framework Documentation  
 - [.pip Framework](./.pip/README.md) - Framework overview

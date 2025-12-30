@@ -2,6 +2,7 @@ import { defineConfig, devices } from '@playwright/test';
 
 const PORT = 4200;
 const HOST = '127.0.0.1';
+const API_PORT = 8787;
 
 export default defineConfig({
   testDir: './tests/e2e',
@@ -18,10 +19,18 @@ export default defineConfig({
       use: { ...devices['Desktop Chrome'] },
     },
   ],
-  webServer: {
-    command: `pnpm exec vite apps/app --host ${HOST} --port ${PORT} --strictPort`,
-    url: `http://${HOST}:${PORT}`,
-    reuseExistingServer: !process.env.CI,
-    timeout: 120_000,
-  },
+  webServer: [
+    {
+      command: 'pnpm nx serve api',
+      url: `http://${HOST}:${API_PORT}/health`,
+      reuseExistingServer: !process.env.CI,
+      timeout: 120_000,
+    },
+    {
+      command: `pnpm exec vite apps/app --host ${HOST} --port ${PORT} --strictPort`,
+      url: `http://${HOST}:${PORT}`,
+      reuseExistingServer: !process.env.CI,
+      timeout: 120_000,
+    },
+  ],
 });

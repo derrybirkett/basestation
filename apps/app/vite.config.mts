@@ -10,6 +10,16 @@ export default defineConfig(() => ({
   server: {
     port: 4200,
     host: 'localhost',
+    proxy: {
+      '/api': {
+        target: process.env.API_ORIGIN ?? 'http://127.0.0.1:8787',
+        changeOrigin: true,
+      },
+      '/auth': {
+        target: process.env.API_ORIGIN ?? 'http://127.0.0.1:8787',
+        changeOrigin: true,
+      },
+    },
   },
   preview: {
     port: 4200,

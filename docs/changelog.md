@@ -7,9 +7,12 @@ All notable changes to basestation are documented here.
 ### Added
 - Agentic workflow playbook (`docs/agentic.md`)
 - Roadmap (`docs/roadmap.md`)
+- Minimal GitHub OAuth backend + repos API (`apps/api`)
+- Local env template for OAuth testing (`.envrc.example`)
 
 ### Changed
 - Updated mission and product graph to a GitHub-first wedge (sign-in → enable integration → repos widget)
+- Repos widget can show “Connect GitHub” and fetch real repos via the backend (dev-proxied through Vite)
 
 ## 2025-12-30 — v0.1.0
 

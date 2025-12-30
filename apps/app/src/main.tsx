@@ -1,10 +1,11 @@
 import { StrictMode } from 'react';
 import * as ReactDOM from 'react-dom/client';
-import { createNoopAuthAdapter } from 'auth';
+import { createLocalStorageAuthAdapter } from 'auth';
 import App from './app/app';
 import { AuthAdapterProvider } from './auth/auth-adapter';
+import { AuthSessionProvider } from './auth/auth-session';
 
-const authAdapter = createNoopAuthAdapter();
+const authAdapter = createLocalStorageAuthAdapter();
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
@@ -13,7 +14,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <StrictMode>
     <AuthAdapterProvider adapter={authAdapter}>
-      <App />
+      <AuthSessionProvider>
+        <App />
+      </AuthSessionProvider>
     </AuthAdapterProvider>
   </StrictMode>,
 );

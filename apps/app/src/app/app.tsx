@@ -3,11 +3,13 @@ import { Input } from '@base-ui/react/input';
 import { useState } from 'react';
 import styles from './app.module.css';
 import { useAuthSession } from '../auth/auth-session';
+import { useIntegrationSettings } from '../integrations/use-integration-settings';
 
 export function App() {
   const { session, isLoading, signIn, signOut } = useAuthSession();
   const [email, setEmail] = useState('');
   const [menuOpen, setMenuOpen] = useState(false);
+  const { settings, setGithubEnabled } = useIntegrationSettings();
 
   if (isLoading) {
     return null;
@@ -133,6 +135,33 @@ export function App() {
           </header>
 
           <div className={styles.widgetsBody}>
+            <div className={styles.widget}>
+              <h3 className={styles.widgetTitle}>Marketplace</h3>
+              <div className={styles.widgetBody}>
+                <div className={styles.integrationRow}>
+                  <div className={styles.integrationCopy}>
+                    <div className={styles.integrationName}>GitHub</div>
+                    <div className={styles.integrationDescription}>
+                      Connect repos and activity.
+                    </div>
+                  </div>
+
+                  <label className={styles.integrationToggle}>
+                    <input
+                      className={styles.integrationToggleInput}
+                      type="checkbox"
+                      checked={settings.github.enabled}
+                      onChange={(e) => setGithubEnabled(e.currentTarget.checked)}
+                      aria-label="Enable GitHub integration"
+                    />
+                    <span className={styles.integrationToggleText}>
+                      {settings.github.enabled ? 'Enabled' : 'Disabled'}
+                    </span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
             <div className={styles.widget}>
               <h3 className={styles.widgetTitle}>Data</h3>
               <p className={styles.widgetBody}>Widget placeholders for now.</p>

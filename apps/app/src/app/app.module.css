@@ -194,6 +194,12 @@
 	gap: 12px;
 }
 
+.widget {
+	border: 1px solid currentColor;
+	border-radius: 10px;
+	padding: 12px;
+}
+
 .widgetTitle {
 	margin: 0;
 	font-size: 14px;
@@ -202,6 +208,41 @@
 
 .widgetBody {
 	margin: 6px 0 0;
+}
+
+.integrationRow {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: 12px;
+}
+
+.integrationCopy {
+	min-width: 0;
+}
+
+.integrationName {
+	font-weight: 600;
+}
+
+.integrationDescription {
+	margin-top: 4px;
+}
+
+.integrationToggle {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	user-select: none;
+}
+
+.integrationToggleInput {
+	width: 16px;
+	height: 16px;
+}
+
+.integrationToggleText {
+	white-space: nowrap;
 }
 
 @media (max-width: 900px) {

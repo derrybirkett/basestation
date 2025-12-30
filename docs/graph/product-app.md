@@ -4,35 +4,47 @@
 
 ## Core Flows
 
-### Auth: Login & Signup
-- Signup inputs: <email, password, name> (+ SSO providers)
-- Verification: <email verification | magic link>
-- Login: <password | SSO | magic link>
-- Recovery: <reset password>, lockout policy
-- Security: rate limit, device/session management, MFA (phase?)
+### Auth: GitHub Sign-In
+- Provider: GitHub OAuth
+- Login: “Continue with GitHub”
+- Session: single-device session to start (expand later)
+- Security (initial): least-privilege scopes, revoke/disconnect, basic rate limiting
 
 ### Logged-in App: Key Journeys
-- Onboarding: welcome, checklist, sample data
-- Primary job-to-be-done 1: <describe steps/end state>
-  - Entry points: <nav/button/API>
-  - Success criteria: <time to value, task completion>
-  - Key surfaces: <pages/components>
+- Onboarding: welcome + “connect GitHub” prompt
 
-- Primary job-to-be-done 2: <describe>
-  - Entry points: <…>
-  - Success criteria: <…>
-  - Key surfaces: <…>
+#### Primary job-to-be-done 1: Connect GitHub and see repos
+- Steps:
+  1. Sign in with GitHub
+  2. Enable the GitHub integration in Marketplace (only integration for now)
+  3. See “Repos” widget on dashboard with basic repo list
+- Entry points:
+  - Dashboard CTA (“Connect GitHub”)
+  - Marketplace page (“Enable GitHub”)
+- Success criteria:
+  - Time to first value: < 5 minutes
+  - Repo widget loads with non-empty state (or a clear empty/error state)
+- Key surfaces:
+  - Dashboard
+  - Marketplace
+
+#### Primary job-to-be-done 2 (next): Ask questions about GitHub data
+- Examples:
+  - “What did I work on this week?”
+  - “Which repos have the most open PRs?”
+- Entry points: Chat panel
+- Success criteria: answer is grounded in fetched data; clear citations/links (phase)
+- Key surfaces: Chat
 
 ### Main Sections
-- Dashboard (overview, alerts, quick actions)
-- Data/Models (browse, create, import)
-- Workflows (run, history, status)
-- Settings (profile, billing, team, security)
+- Dashboard (widgets: repos first)
+- Marketplace (list of integrations; GitHub first)
+- Settings (profile, basic security, disconnect GitHub)
 
 ## Accessibility & Performance
 - A11y: keyboard nav, contrast, ARIA, focus order
 - Perf: TTI, LCP, FID budgets, code-splitting
 
 ## Telemetry
-- Events: auth, onboarding milestones, feature usage
-- Dashboards: activation, retention, funnel drop-off
+- Events (initial): GitHub sign-in success/fail, enable integration, repos widget viewed
+- Dashboards: activation (sign-in → enable integration → widget view), retention

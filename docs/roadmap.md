@@ -32,41 +32,41 @@ This roadmap translates our mission into small, shippable milestones.
 
 ---
 
-### v0.2.0 — Real navigation + account basics
+### v0.2.0 — GitHub sign-in + first integration + repos widget
 
-**Goal**: turn the app shell into a usable surface with minimal routing.
+**Goal**: deliver the first end-to-end “data → information” loop for developers.
 
 **In scope**:
-- Add routes/pages for **Profile** and **Settings** (so the user menu is real)
-- Basic “session” display + sign-out works reliably
-- Marketing → App handoff remains clear (CTA to app)
+- Sign in with GitHub (as the first auth provider)
+- Marketplace contains 1 integration: GitHub
+- User can enable/disable GitHub integration
+- Dashboard shows a basic “Repos” widget
+- Profile/Settings pages exist (even if minimal) so the user menu is real
 
 **Out of scope**:
 - Billing, teams, permissions
-- Deep settings (only placeholders where needed)
+- Multiple integrations
+- Deep analytics, complex search
 
 **Definition of done**:
-- UI routes exist and are reachable from the user menu
-- Unit tests updated for the new routes
+- A new user can: sign in → enable GitHub → see repos widget
+- Clear empty/error states
+- Unit tests cover the core UI flow
 
 ---
 
-### v0.3.0 — First data source (MVP)
+### v0.3.0 — GitHub ingestion + persistence (MVP)
 
-**Goal**: connect one real data source end-to-end and show the data in the app.
-
-**In scope (pick one)**:
-- Google (Gmail/Calendar/Drive), GitHub, or a CSV import
+**Goal**: make the GitHub integration robust enough to build on.
 
 **Deliverables**:
-- A provider adapter boundary (new `libs/data-*` or similar) to avoid hard-coding a single source
-- Minimal data model for “items” we can list/search
-- A simple UI: connect source → see imported items
+- A GitHub data adapter boundary (new `libs/github` or `libs/integrations/github`)
+- Minimal persistence for fetched entities (repos first)
+- “Refresh” behavior and a basic “last synced” indicator
 
 **Definition of done**:
-- One-click “connect” flow in UI (even if developer-mode initially)
-- Data is visible in the product surface
-- Tests cover adapter and UI happy path
+- Repos widget can load from persisted data and refresh from GitHub
+- Tests cover adapter + persistence boundary
 
 ---
 
@@ -94,6 +94,6 @@ This roadmap translates our mission into small, shippable milestones.
 
 ## Risks / Open Decisions
 
-- **Auth provider**: pick a provider (or keep local for longer) before investing deeply.
+- **Auth provider**: GitHub-first is a strong wedge, but it narrows the initial audience.
 - **Data model**: “hub” can grow quickly; keep the first source intentionally narrow.
 - **Privacy/security**: connecting personal accounts demands explicit security posture early.

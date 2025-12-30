@@ -45,7 +45,7 @@ pnpm nx serve marketing
 
 ## Status
 
-🚧 **In Development** - Project bootstrapped 2025-12-30
+✅ **v0.1.0** - Initial product surfaces + auth gating (2025-12-30)
 
 ---
 

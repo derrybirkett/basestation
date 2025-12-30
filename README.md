@@ -31,16 +31,16 @@ This project uses `.pip` as an immutable template (genome):
 ## Getting Started
 
 ```bash
-# Initialize Nx workspace
-npx nx@latest init --integrated
-pnpm init
-pnpm add -D nx @nx/workspace
+pnpm install
 
-# Apply infrastructure fragment
-./.pip/bin/apply-nx-dev-infra.sh
+# Start local dev infrastructure (Docker Compose)
+pnpm nx run infra:up
 
-# Start development environment
-nx run infra:up
+# Start the product app surface
+pnpm nx serve app
+
+# Start the marketing surface
+pnpm nx serve marketing
 ```
 
 ## Status

@@ -9,9 +9,12 @@ describe('App', () => {
   });
 
   it('should have a greeting as the title', () => {
-    const { getAllByText } = render(<App />);
-    expect(
-      getAllByText(new RegExp('Welcome web', 'gi')).length > 0,
-    ).toBeTruthy();
+    const { getByRole } = render(<App />);
+    expect(getByRole('heading', { name: 'basestation' })).toBeTruthy();
+  });
+
+  it('should link to sign in', () => {
+    const { getByRole } = render(<App />);
+    expect(getByRole('link', { name: 'Sign in' })).toBeTruthy();
   });
 });

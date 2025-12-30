@@ -1,0 +1,41 @@
+.page {
+	min-height: 100vh;
+	padding: 24px;
+}
+
+.hero {
+	max-width: 72ch;
+	margin: 10vh auto 0;
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+.title {
+	margin: 0;
+	font-size: 40px;
+	line-height: 44px;
+}
+
+.subtitle {
+	margin: 0;
+	font-size: 16px;
+	line-height: 24px;
+}
+
+.primaryCta {
+	align-self: flex-start;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 10px 14px;
+	border-radius: 10px;
+	border: 1px solid currentColor;
+	text-decoration: none;
+	font: inherit;
+}
+
+.primaryCta:focus-visible {
+	outline: 2px solid currentColor;
+	outline-offset: 2px;
+}

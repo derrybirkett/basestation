@@ -22,6 +22,8 @@ This project uses `.pip` as an immutable template (genome):
 - [Mission](./docs/mission.md) - Project purpose and vision
 - [Activity Log](./docs/activity-log.md) - Historical record of changes
 - [Changelog](./docs/changelog.md) - User-facing release notes
+- [Agentic Workflow](./docs/agentic.md) - How to use agents with a human in the loop
+- [Roadmap](./docs/roadmap.md) - Milestones and scope
 
 ### Framework Documentation  
 - [.pip Framework](./.pip/README.md) - Framework overview
@@ -31,21 +33,21 @@ This project uses `.pip` as an immutable template (genome):
 ## Getting Started
 
 ```bash
-# Initialize Nx workspace
-npx nx@latest init --integrated
-pnpm init
-pnpm add -D nx @nx/workspace
+pnpm install
 
-# Apply infrastructure fragment
-./.pip/bin/apply-nx-dev-infra.sh
+# Start local dev infrastructure (Docker Compose)
+pnpm nx run infra:up
 
-# Start development environment
-nx run infra:up
+# Start the product app surface
+pnpm nx serve app
+
+# Start the marketing surface
+pnpm nx serve marketing
 ```
 
 ## Status
 
-🚧 **In Development** - Project bootstrapped 2025-12-30
+✅ **v0.1.0** - Initial product surfaces + auth gating (2025-12-30)
 
 ---
 

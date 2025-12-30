@@ -1,0 +1,90 @@
+.page {
+	min-height: 100vh;
+}
+
+.layout {
+	display: grid;
+	grid-template-columns: minmax(0, 3fr) minmax(0, 1fr);
+	gap: 16px;
+	padding: 16px;
+	align-items: stretch;
+}
+
+.chatColumn,
+.widgetsColumn {
+	min-width: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+.columnHeader {
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	min-height: 32px;
+}
+
+.columnTitle {
+	margin: 0;
+	font-size: 16px;
+	line-height: 20px;
+}
+
+.chatBody {
+	flex: 1;
+	min-height: 0;
+	display: flex;
+}
+
+.chatPlaceholder {
+	margin: auto;
+	max-width: 52ch;
+	text-align: center;
+}
+
+.placeholderTitle {
+	margin: 0;
+	font-weight: 600;
+}
+
+.placeholderBody {
+	margin: 8px 0 0;
+}
+
+.chatComposer {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) auto;
+	gap: 8px;
+	align-items: center;
+}
+
+.chatInput {
+	width: 100%;
+}
+
+.sendButton {
+	white-space: nowrap;
+}
+
+.widgetsBody {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+.widgetTitle {
+	margin: 0;
+	font-size: 14px;
+	line-height: 18px;
+}
+
+.widgetBody {
+	margin: 6px 0 0;
+}
+
+@media (max-width: 900px) {
+	.layout {
+		grid-template-columns: 1fr;
+	}
+}

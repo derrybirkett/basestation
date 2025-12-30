@@ -1,0 +1,28 @@
+# dependencies
+node_modules/
+
+# environment (direnv, dotenv)
+.envrc
+.env
+.env.*
+
+# logs
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+
+# OS/editor
+.DS_Store
+
+# build outputs
+dist/
+build/
+coverage/
+tmp/
+
+# Nx
+.nx/installation
+.nx/cache
+.nx/workspace-data
+vite.config.*.timestamp*
+vitest.config.*.timestamp*

@@ -245,6 +245,23 @@
 	white-space: nowrap;
 }
 
+.repoList {
+	margin: 0;
+	padding-left: 18px;
+}
+
+.repoListItem {
+	margin: 6px 0;
+}
+
+.repoLink {
+	color: inherit;
+}
+
+.repoLink:hover {
+	text-decoration: underline;
+}
+
 @media (max-width: 900px) {
 	.layout {
 		grid-template-columns: 1fr;

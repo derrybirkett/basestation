@@ -4,6 +4,7 @@ import { useState } from 'react';
 import styles from './app.module.css';
 import { useAuthSession } from '../auth/auth-session';
 import { useIntegrationSettings } from '../integrations/use-integration-settings';
+import { ReposWidget } from '../widgets/repos-widget';
 
 export function App() {
   const { session, isLoading, signIn, signOut } = useAuthSession();
@@ -162,10 +163,7 @@ export function App() {
               </div>
             </div>
 
-            <div className={styles.widget}>
-              <h3 className={styles.widgetTitle}>Data</h3>
-              <p className={styles.widgetBody}>Widget placeholders for now.</p>
-            </div>
+            <ReposWidget githubEnabled={settings.github.enabled} />
           </div>
         </section>
       </div>

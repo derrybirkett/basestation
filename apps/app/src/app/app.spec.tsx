@@ -46,7 +46,7 @@ describe('App', () => {
       },
     };
 
-    const { findByLabelText } = render(
+    const { findByLabelText, findByText } = render(
       <AuthAdapterProvider adapter={adapter}>
         <AuthSessionProvider>
           <App />
@@ -61,6 +61,8 @@ describe('App', () => {
     expect(toggle.checked).toBe(false);
     fireEvent.click(toggle);
     expect(toggle.checked).toBe(true);
+
+    expect(await findByText('derrybirkett/basestation')).toBeTruthy();
 
     const persisted = window.localStorage.getItem(
       'basestation.integrations.settings.v1',

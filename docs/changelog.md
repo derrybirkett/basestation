@@ -4,6 +4,13 @@ All notable changes to basestation are documented here.
 
 ## Unreleased
 
+### Added
+- Agentic workflow playbook (`docs/agentic.md`)
+- Roadmap (`docs/roadmap.md`)
+
+### Changed
+- Updated mission and product graph to a GitHub-first wedge (sign-in → enable integration → repos widget)
+
 ## 2025-12-30 — v0.1.0
 
 ### Added

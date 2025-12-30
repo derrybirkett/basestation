@@ -14,7 +14,7 @@ export type SignInOptions = {
 export interface AuthAdapter {
   readonly name: string;
   getSession(): Promise<AuthSession | null>;
-	// Provider-agnostic sign-in. Concrete adapters decide how to interpret options.
+  // Provider-agnostic sign-in. Concrete adapters decide how to interpret options.
   signIn(options?: SignInOptions): Promise<AuthSession>;
   signOut(): Promise<void>;
 }

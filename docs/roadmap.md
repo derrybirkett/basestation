@@ -26,7 +26,7 @@ This roadmap translates our mission into small, shippable milestones.
 - Next milestone date/objective set
 
 **Success metrics** (examples; pick real numbers):
-- Time-to-first-value (TTFV): < 10 minutes
+- Time-to-first-value (TTFV): < 5 minutes (sign-in → repos widget)
 - Weekly active usage: <target>
 - Connected sources per user: <target>
 

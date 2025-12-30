@@ -61,10 +61,44 @@
 
 .chatInput {
 	width: 100%;
+	min-width: 0;
+	padding: 8px 10px;
+	border-radius: 8px;
+	border: 1px solid currentColor;
+	background: transparent;
+	font: inherit;
+	line-height: 20px;
+	outline: none;
+	-webkit-appearance: none;
+}
+
+.chatInput:focus-visible {
+	outline: 2px solid currentColor;
+	outline-offset: 2px;
 }
 
 .sendButton {
 	white-space: nowrap;
+	padding: 8px 12px;
+	border-radius: 8px;
+	border: 1px solid currentColor;
+	background: transparent;
+	font: inherit;
+	line-height: 20px;
+	cursor: pointer;
+}
+
+.sendButton:focus-visible {
+	outline: 2px solid currentColor;
+	outline-offset: 2px;
+}
+
+.sendButton:hover {
+	filter: brightness(0.97);
+}
+
+.sendButton:active {
+	transform: translateY(1px);
 }
 
 .widgetsBody {

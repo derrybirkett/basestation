@@ -20,6 +20,10 @@ build/
 coverage/
 tmp/
 
+# Playwright
+playwright-report/
+test-results/
+
 # Nx
 .nx/installation
 .nx/cache

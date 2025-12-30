@@ -1,4 +1,9 @@
 {
+  "scripts": {
+    "e2e": "playwright test",
+    "e2e:ui": "playwright test --ui",
+    "e2e:install": "playwright install"
+  },
   "devDependencies": {
     "@eslint/js": "^9.8.0",
     "@nx/eslint": "22.3.3",
@@ -14,6 +19,7 @@
     "@swc/helpers": "~0.5.11",
     "@testing-library/dom": "10.4.0",
     "@testing-library/react": "16.3.0",
+    "@playwright/test": "^1.51.1",
     "@types/node": "20.19.9",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",

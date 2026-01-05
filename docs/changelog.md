@@ -9,10 +9,14 @@ All notable changes to basestation are documented here.
 - Roadmap (`docs/roadmap.md`)
 - Minimal GitHub OAuth backend + repos API (`apps/api`)
 - Local env template for OAuth testing (`.envrc.example`)
+- Contributor guidelines (`CONTRIBUTING.md`) and agent repo guidance (`AGENTS.md`)
+- Scheduled genome update PR automation for `.pip` (`.github/workflows/genome-update.yml`)
+- Safe `.pip` defaults via `.piprc` (`PIP_MODE=propose`, `PIP_ACTION_MODE=confirm`)
 
 ### Changed
 - Updated mission and product graph to a GitHub-first wedge (sign-in → enable integration → repos widget)
 - Repos widget can show “Connect GitHub” and fetch real repos via the backend (dev-proxied through Vite)
+- Bumped `.pip` submodule to include first-class `.piprc` + execution modes
 
 ## 2025-12-30 — v0.1.0
 

@@ -1,0 +1,7 @@
+# .piprc (organism config)
+# Safe defaults: prefer planning and confirmations unless explicitly executing.
+# No secrets here; use .envrc for tokens.
+
+PIPRC_VERSION=1
+PIP_MODE=propose
+PIP_ACTION_MODE=confirm

@@ -32,6 +32,8 @@ This project uses `.pip` as an immutable template (genome):
 
 ## Getting Started
 
+For contributing guidelines, see [CONTRIBUTING.md](./CONTRIBUTING.md).
+
 ```bash
 pnpm install
 

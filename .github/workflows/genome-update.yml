@@ -1,0 +1,92 @@
+name: Genome update (.pip)
+
+on:
+  schedule:
+    # Daily at 03:17 UTC (stagger-friendly; adjust as desired)
+    - cron: '17 3 * * *'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: genome-update
+  cancel-in-progress: false
+
+jobs:
+  bump-pip-submodule:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          submodules: recursive
+
+      - name: Configure git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Detect genome update
+        id: detect
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          # Ensure submodule exists in clean clones too
+          git submodule update --init --recursive .pip
+
+          # Fetch upstream for the submodule and compute current vs target
+          git -C .pip fetch --prune origin main
+
+          current_sha="$(git -C .pip rev-parse HEAD)"
+          target_sha="$(git -C .pip rev-parse origin/main)"
+
+          echo "current_sha=$current_sha" >> "$GITHUB_OUTPUT"
+          echo "target_sha=$target_sha" >> "$GITHUB_OUTPUT"
+
+          if [[ "$current_sha" == "$target_sha" ]]; then
+            echo "needs_update=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          echo "needs_update=true" >> "$GITHUB_OUTPUT"
+
+      - name: Update .pip submodule pointer
+        if: steps.detect.outputs.needs_update == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          target_sha="${{ steps.detect.outputs.target_sha }}"
+
+          # Move the submodule checkout to the target commit, then stage the pointer update.
+          git -C .pip checkout --detach "$target_sha"
+          git add .pip
+
+          # Helpful context for PR body
+          echo "Updated .pip to $target_sha" 
+
+      - name: Create pull request
+        if: steps.detect.outputs.needs_update == 'true'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          branch: chore/bump-pip-genome
+          delete-branch: true
+          commit-message: "chore: bump .pip genome"
+          title: "chore: bump .pip genome"
+          body: |
+            This PR updates the pinned `.pip` submodule (the genome).
+
+            - Previous: `${{ steps.detect.outputs.current_sha }}`
+            - New: `${{ steps.detect.outputs.target_sha }}`
+
+            Notes:
+            - `.pip` is treated as immutable in organisms; only the submodule pointer is advanced.
+            - If this introduces new workflow/tooling conventions, follow the `.pip` docs for migration steps.
+          labels: |
+            chore
+            dependencies
